@@ -6,16 +6,16 @@ interface TypeBadgeProps {
 }
 
 export default function TypeBadge({ type, size = 'md' }: TypeBadgeProps) {
-  const sizeClasses = {
-    sm: 'text-xs px-2 py-0.5',
-    md: 'text-sm px-3 py-1',
-    lg: 'text-base px-4 py-1.5',
+  const sizeStyles = {
+    sm: { fontSize: '12px', padding: '6px 16px' },
+    md: { fontSize: '14px', padding: '8px 20px' },
+    lg: { fontSize: '16px', padding: '10px 24px' },
   };
 
   return (
     <span
-      className={`inline-block rounded-full font-semibold text-white capitalize ${sizeClasses[size]}`}
-      style={{ backgroundColor: getTypeColor(type) }}
+      className="inline-block rounded-full font-semibold text-white capitalize"
+      style={{ backgroundColor: getTypeColor(type), ...sizeStyles[size] }}
     >
       {type}
     </span>

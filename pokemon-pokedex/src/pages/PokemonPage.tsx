@@ -50,14 +50,24 @@ export default function PokemonPage({ pokemon, typeChart }: PokemonPageProps) {
 
   if (loading || !currentPokemon) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <div
+        className="min-h-screen"
+        style={{
+          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
+        }}
+      >
         <LoadingSpinner />
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div
+      className="min-h-screen"
+      style={{
+        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
+      }}
+    >
       <PokemonDetail pokemon={currentPokemon} allPokemon={pokemon} typeChart={typeChart} />
     </div>
   );

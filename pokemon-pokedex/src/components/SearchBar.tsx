@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { Input } from '@fluentui/react-components';
+import { Search24Regular } from '@fluentui/react-icons';
 
 interface SearchBarProps {
   value: string;
@@ -18,12 +20,13 @@ export default function SearchBar({ value, onChange }: SearchBarProps) {
   }, [localValue, onChange]);
 
   return (
-    <input
-      type="text"
+    <Input
+      contentBefore={<Search24Regular />}
       placeholder="Search Pokemon..."
       value={localValue}
-      onChange={(e) => setLocalValue(e.target.value)}
-      className="flex-1 px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      onChange={(_, data) => setLocalValue(data.value)}
+      size="large"
+      className="flex-1"
     />
   );
 }

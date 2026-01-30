@@ -7,14 +7,19 @@ interface HomeProps {
 
 export default function Home({ pokemon }: HomeProps) {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <header className="bg-white dark:bg-gray-800 shadow-md border-b border-gray-200 dark:border-gray-700">
-        <div className="max-w-7xl mx-auto px-4 py-6">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-100">
-            Pokedex
+    <div
+      className="min-h-screen"
+      style={{
+        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
+      }}
+    >
+      <header className="bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 shadow-2xl border-b-4 border-yellow-600">
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <h1 className="text-5xl font-bold text-white drop-shadow-lg" style={{ textShadow: '3px 3px 6px rgba(0,0,0,0.3)' }}>
+            ⚡ Pokédex ⚡
           </h1>
-          <p className="text-gray-600 dark:text-gray-400 mt-1">
-            Gen 1 Pokemon Encyclopedia
+          <p className="text-white text-lg mt-2 drop-shadow" style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.3)' }}>
+            Gen 1 Pokemon Card Collection
           </p>
         </div>
       </header>

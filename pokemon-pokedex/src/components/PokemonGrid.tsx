@@ -23,8 +23,16 @@ export default function PokemonGrid({ pokemon }: PokemonGridProps) {
   return (
     <div>
       {/* Search and Filter Bar */}
-      <div className="sticky top-0 z-10 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 p-4 mb-6">
-        <div className="max-w-7xl mx-auto flex gap-4 flex-col sm:flex-row">
+      <div
+        className="sticky top-0 z-10 shadow-lg border-b-4 border-yellow-500 p-4 mb-6"
+        style={{
+          background: 'linear-gradient(135deg, #f4d03f 0%, #f9e79f 100%)',
+        }}
+      >
+        <div 
+          className="flex gap-4 flex-col sm:flex-row"
+          style={{ maxWidth: '600px', margin: '0 auto' }}
+        >
           <SearchBar value={searchQuery} onChange={setSearchQuery} />
           <TypeFilter selectedType={selectedType} onChange={setSelectedType} />
         </div>
@@ -32,21 +40,23 @@ export default function PokemonGrid({ pokemon }: PokemonGridProps) {
 
       {/* Results Count */}
       <div className="max-w-7xl mx-auto px-4 mb-4">
-        <p className="text-sm text-gray-600 dark:text-gray-400">
-          Showing {filteredPokemon.length} of {pokemon.length} Pokemon
-        </p>
+        <div className="bg-white/90 rounded-lg px-4 py-2 inline-block shadow">
+          <p className="text-sm font-semibold text-gray-700">
+            📋 Showing {filteredPokemon.length} of {pokemon.length} Pokemon
+          </p>
+        </div>
       </div>
 
       {/* Pokemon Grid */}
       <div className="max-w-7xl mx-auto px-4 pb-8">
         {filteredPokemon.length === 0 ? (
-          <div className="text-center py-12">
-            <p className="text-gray-500 dark:text-gray-400 text-lg">
-              No Pokemon found matching your criteria
+          <div className="text-center py-12 bg-white/80 rounded-xl shadow-lg">
+            <p className="text-gray-700 text-lg font-semibold">
+              🔍 No Pokemon found matching your criteria
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="flex flex-wrap justify-center" style={{ gap: '2rem' }}>
             {filteredPokemon.map((p) => (
               <PokemonCard key={p.id} pokemon={p} />
             ))}

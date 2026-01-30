@@ -1,3 +1,4 @@
+import { Dropdown, Option } from '@fluentui/react-components';
 import { TYPE_COLORS } from '../utils/typeColors';
 
 interface TypeFilterProps {
@@ -9,17 +10,21 @@ export default function TypeFilter({ selectedType, onChange }: TypeFilterProps) 
   const types = Object.keys(TYPE_COLORS);
 
   return (
-    <select
-      value={selectedType || ''}
-      onChange={(e) => onChange(e.target.value || null)}
-      className="px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 capitalize"
+    <Dropdown
+      placeholder="All Types"
+      value={selectedType ? selectedType.charAt(0).toUpperCase() + selectedType.slice(1) : 'All Types'}
+      onOptionSelect={(_, data) => {
+        onChange(data.optionValue === 'all' ? null : data.optionValue || null);
+      }}
+      size="large"
+      style={{ minWidth: '180px' }}
     >
-      <option value="">All Types</option>
+      <Option value="all">All Types</Option>
       {types.map((type) => (
-        <option key={type} value={type} className="capitalize">
-          {type}
-        </option>
+        <Option key={type} value={type}>
+          {type.charAt(0).toUpperCase() + type.slice(1)}
+        </Option>
       ))}
-    </select>
+    </Dropdown>
   );
 }
